@@ -20,7 +20,7 @@ $total= ProductController::cartItem();
         <ul class="nav navbar-nav">
           <li class=""><a href="#">Home </a></li>
 
-          <li class=""><a href="#">Orders </a></li>
+          <li class=""><a href="/myorders">Orders </a></li>
         </ul>
         <form class="navbar-form navbar-left">
           <div class="form-group">
