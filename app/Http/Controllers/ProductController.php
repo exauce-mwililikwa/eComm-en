@@ -42,7 +42,22 @@ static function cartItem(){
 function cartList(){
     $products=DB::table('cart')
     ->join('products','cart.product_id','=','products.id')
-    ->where('cart.user_id', Session::get('user')['id'])->get();
+    ->where('cart.user_id', Session::get('user')['id'])
+    ->select('products.*','cart.id as cart_id')
+    ->get();
     return view('cartList',['products'=>$products]);
+}
+function removeCart($id){
+    Cart::destroy($id);
+    return redirect('cartlist');
+}
+function ordernow(){
+    $total=DB::table('cart')
+    ->join('products','cart.product_id','=','products.id')
+    ->where('cart.user_id', Session::get('user')['id'])
+    ->select('products.*','cart.id as cart_id')
+    ->sum('products.price');
+ 
+    return view('ordernow',['total'=>$total]);
 }
 }
