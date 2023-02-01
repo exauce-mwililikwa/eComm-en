@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('status');
             $table->string('payment_methos');
+            $table->string('address');
             $table->string('payment_status');
             $table->timestamps();
         });
